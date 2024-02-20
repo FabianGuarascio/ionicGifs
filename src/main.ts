@@ -7,6 +7,7 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 defineCustomElements(window);
 
 if (environment.production) {
@@ -18,5 +19,6 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes),
+    provideHttpClient(withFetch())
   ],
 });
