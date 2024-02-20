@@ -1,0 +1,7 @@
+{
+  "name": "gifs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
