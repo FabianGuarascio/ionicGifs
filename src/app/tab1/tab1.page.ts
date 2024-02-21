@@ -15,7 +15,7 @@ import { JsonPipe } from '@angular/common';
 export class Tab1Page {
 
   private apiService = inject(GiphyApiService)
-  public trendingGifs = toSignal(this.apiService.getTrendings())
+  public trendingGifs = toSignal(this.apiService.getTrendings( 0, 5))
 
 
 
