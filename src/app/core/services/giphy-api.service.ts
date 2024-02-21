@@ -11,10 +11,12 @@ export class GiphyApiService {
 
   private http = inject(HttpClient)
 
-  getTrendings(withLog: 'noLog'|'withLog' = 'noLog'):Observable<TrendingResponse>{
+  getTrendings(offset = 0 , limit = 5, withLog: 'noLog'|'withLog' = 'noLog'):Observable<TrendingResponse>{
     const url = 'https://api.giphy.com/v1/gifs/trending'
     const params = new HttpParams()
       .append('api_key', environment.apiKey)
-    return this.http.get<TrendingResponse>(url,{params}).pipe(withLog === 'withLog' ? tap(console.log): tap() )
+      .append('limit', limit )
+      .append('offset', offset)
+    return this.http.get<TrendingResponse>( url , { params } ).pipe(withLog === 'withLog' ? tap(console.log): tap() )
   }
 }
