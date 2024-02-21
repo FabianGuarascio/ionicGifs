@@ -1,17 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Infinite Scroll
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    @for(gif of trendingGifs ; track gif.id){
+      <img [src]="gif.images.downsized.url" alt="">
+    } @empty {
+      Loading...
+    }
+  </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"/>
+  </ion-infinite-scroll>
 </ion-content>
