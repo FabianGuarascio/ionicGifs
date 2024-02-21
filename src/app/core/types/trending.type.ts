@@ -1,3 +1,5 @@
+import { UrlAnalytics } from "./util-types/url.type";
+
 export type TrendingResponse = {
   data: Data[];
   meta:any;
@@ -35,7 +37,7 @@ type Analytics = {
 }
 
 type Onload = {
-  url: string;
+  url: UrlAnalytics;
 }
 
 type User = {
